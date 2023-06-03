@@ -34,12 +34,12 @@ async def handle_whitelist(data, bot):
     cnx = await create_mysql_connection()
     cursor = cnx.cursor()
     query = "SELECT * FROM whitelist_campaigns where group_id = %s"
-    cursor.execute(query, (chat_id,))
-    result = cursor.fetchall()
+    await cursor.execute(query, (chat_id,))
+    result = await cursor.fetchall()
     if len(result) == 0:
         query = "INSERT INTO whitelist_registrations (campaign_id, chat_id, chat_title, tier) VALUES (1, %s, %s, 1)"
-        cursor.execute(query, (chat_id, message))
-        cnx.commit()
+        await cursor.execute(query, (chat_id, message))
+        await cnx.commit()
         await sendMessage(chat_id, "Inserted", bot)
     else:
         await sendMessage(chat_id, "Already whitelisted", bot)
