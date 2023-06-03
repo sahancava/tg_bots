@@ -12,6 +12,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from bs4 import BeautifulSoup
 
 BOT_TOKEN, BOT_CREATOR_ID, LOG_PATH, TELEGRAM_API_BASE_URL, WEBHOOK_URL, WHITELIST_TOKEN, PRESALE_TOKEN = handle_config()
 
@@ -30,10 +31,10 @@ async def webhook():
                 split_message = message.split()
                 if len(split_message) == 2:
                     presale_url = split_message[1]
-                    presale_html_content = await get_html(presale_url)
-                    if presale_html_content:
+                    MIN_BUY, MAX_BUY, END_TIME, PRESALE_ADDRESS = await get_html(presale_url)
+                    if MIN_BUY is not None and MAX_BUY is not None and END_TIME is not None and PRESALE_ADDRESS is not None:
                         await sendMessage(chat_id, "Presale URL is valid", bot)
-                        print(presale_html_content)
+                        print(MIN_BUY, MAX_BUY, END_TIME, PRESALE_ADDRESS)
                     else:
                         await sendMessage(chat_id, "Presale URL is invalid", bot)
                 else:
@@ -42,6 +43,12 @@ async def webhook():
 
 async def get_html(url):
     response = requests.get(url)
+
+    END_TIME = None
+    MAX_BUY = None
+    MIN_BUY = None
+    PRESALE_ADDRESS = None
+
     if response.status_code == 200:
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         driver.get(url)
@@ -57,32 +64,39 @@ async def get_html(url):
             
             WebDriverWait(table, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'tbody')))
             tbody = table.find_element(By.TAG_NAME, 'tbody')
-            # tbody_html = tbody.get_attribute('innerHTML')
-            # print('tbody_html: ', tbody_html)
             
             WebDriverWait(tbody, 10).until(EC.presence_of_all_elements_located((By.TAG_NAME, 'tr')))
             rows = tbody.find_elements(By.TAG_NAME, 'tr')
-            rows_html = rows[14].get_attribute('innerHTML')
-            print('rows_html: ', rows_html)
+            
+            max_buy_amount = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//td[text()='Maximum Buy']")))
+            min_buy_amount = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//td[text()='Minimum Buy']")))
+            presale_address = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//td[text()='Presale Address']")))
 
             if len(rows) > 14:
                 target_row = rows[14]
                 
-                WebDriverWait(target_row, 10).until(EC.presence_of_all_elements_located((By.TAG_NAME, 'td')))
-                needed_td = target_row.find_elements(By.TAG_NAME, 'td')[1]
+                # Scroll to the target row
+                driver.execute_script("arguments[0].scrollIntoView();", target_row)
                 
-                # if needed_td:
-                #     needed_text = needed_td.get_text(strip=True)
-                #     datetime_str = needed_text.split('(')[0].strip()
-                #     datetime_obj = datetime.strptime(datetime_str, '%Y.%m.%d %H:%M')
-                #     return datetime_obj
+                # Wait for the content to load (adjust the sleep duration as needed)
+                sleep(2)
+                
+                WebDriverWait(target_row, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'has-text-right')))
+                expected = target_row.find_element(By.CLASS_NAME, 'has-text-right')
+                target_row_html = expected.get_attribute('innerHTML')
+                target_row_html = target_row_html.split('(')[0].strip()
+                target_row_html = datetime.strptime(target_row_html, '%Y.%m.%d %H:%M')
+                END_TIME = int(target_row_html.timestamp())
 
-                return 1
-        
+                if max_buy_amount and min_buy_amount and presale_address:
+                    MAX_BUY = max_buy_amount.find_element(By.XPATH, './following-sibling::td').text.strip().split(' ')[0]
+                    MIN_BUY = min_buy_amount.find_element(By.XPATH, './following-sibling::td').text.strip().split(' ')[0]
+                    PRESALE_ADDRESS = presale_address.find_element(By.XPATH, './following-sibling::td').text.strip()
+
         finally:
             driver.quit()
     
-    return None
+    return MIN_BUY, MAX_BUY, END_TIME, PRESALE_ADDRESS
     # response = requests.get(url)
     # if response.status_code == 200:
     #     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
