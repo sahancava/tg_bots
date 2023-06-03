@@ -5,10 +5,10 @@ import threading
 # from flask import Flask, request, jsonify
 # import asyncio
 from quart import Quart, request, jsonify
-import telegram 
+import telegram
 from helpers import (create_mysql_connection, sendMessage, handle_config)
 
-BOT_TOKEN, BOT_CREATOR_ID, LOG_PATH, TELEGRAM_API_BASE_URL, WEBHOOK_URL, WHITELIST_TOKEN = handle_config()
+BOT_TOKEN, BOT_CREATOR_ID, LOG_PATH, TELEGRAM_API_BASE_URL, WEBHOOK_URL, WHITELIST_TOKEN, PRESALE_TOKEN = handle_config()
 
 app = Quart(__name__)
 bot = telegram.Bot(token=WHITELIST_TOKEN)

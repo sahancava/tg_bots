@@ -33,7 +33,7 @@ from helpers import (
     handle_logger,
     handle_config
 )
-BOT_TOKEN, BOT_CREATOR_ID, LOG_PATH, TELEGRAM_API_BASE_URL, WEBHOOK_URL = handle_config()
+BOT_TOKEN, BOT_CREATOR_ID, LOG_PATH, TELEGRAM_API_BASE_URL, WEBHOOK_URL, WHITELIST_TOKEN, PRESALE_TOKEN = handle_config()
 app = Flask(__name__)
 
 bot = telegram.Bot(token=BOT_TOKEN)

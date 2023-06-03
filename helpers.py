@@ -17,9 +17,10 @@ def handle_config():
     BOT_CREATOR_ID = config['DEFAULT']['BOT_CREATOR_ID']
     LOG_PATH = config['DEFAULT']['LOG_PATH']
     WHITELIST_TOKEN = config['DEFAULT']['WHITELIST_TOKEN']
+    PRESALE_TOKEN = config['DEFAULT']['PRESALE_TOKEN']
     TELEGRAM_API_BASE_URL = f'https://api.telegram.org/bot{BOT_TOKEN}/'
     WEBHOOK_URL = 'hello-world'
-    return BOT_TOKEN, BOT_CREATOR_ID, LOG_PATH, TELEGRAM_API_BASE_URL, WEBHOOK_URL, WHITELIST_TOKEN
+    return BOT_TOKEN, BOT_CREATOR_ID, LOG_PATH, TELEGRAM_API_BASE_URL, WEBHOOK_URL, WHITELIST_TOKEN, PRESALE_TOKEN
 async def create_mysql_connection():
     try:
         cnx = await mysql.connector.connect(user=config['DATABASE']['DB_USER'], password=config['DATABASE']['DB_PASSWORD'], host=config['DATABASE']['DB_HOST'], database=config['DATABASE']['DB_NAME'])
