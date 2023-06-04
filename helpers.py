@@ -141,6 +141,14 @@ async def sendMessage(chat_id, text: str, _bot):
     except Exception as e:
         async with _bot:
             await _bot.sendMessage(chat_id=chat_id, text='Error: {}'.format(e))
+async def sendKeyboardMarkup(chat_id, text: str, _bot, _type):
+    try:
+        async with _bot:
+            await _bot.send_message(chat_id=chat_id, text=text, reply_markup=_type)
+    except Exception as e:
+        async with _bot:
+            await _bot.sendMessage(chat_id=chat_id, text='Error: {}'.format(e))
+
 async def getUserName(chat_id, userID, _bot):
     try:
         async with _bot:
@@ -157,7 +165,7 @@ async def replyMessage(chat_id, text: str, message_id, _bot):
         async with _bot:
             await _bot.sendMessage(chat_id=chat_id, text='Error: {}'.format(e))
 
-def handle_logger(log_path):
+def handle_logger(log_path, type):
     today = time.strftime("%Y-%m-%d")
     if not os.path.exists(log_path):
         os.makedirs(log_path)
@@ -166,7 +174,7 @@ def handle_logger(log_path):
     rootLogger = logging.getLogger()
     logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
     handler = logging.handlers.TimedRotatingFileHandler(
-        f"{log_path}/{today}-log.log", when="midnight", backupCount=7
+        f"{log_path}/{type}-{today}-log.log", when="midnight", backupCount=7
     )
     handler.setLevel(logging.INFO)
     handler.setFormatter(logFormatter)

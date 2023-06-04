@@ -1,0 +1,62 @@
+2023-06-04 02:58:12,734 [MainThread  ] [INFO ]  {'1', 1686056400, '0x79A549E0CD42742081609383127C15E79E36ad54', '0.1'}
+2023-06-04 02:59:06,888 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 03:32:21,523 [MainThread  ] [ERROR]  Invalid command
+2023-06-04 03:32:22,160 [MainThread  ] [ERROR]  Invalid command
+2023-06-04 03:32:24,424 [MainThread  ] [ERROR]  Invalid command
+2023-06-04 03:32:28,664 [MainThread  ] [ERROR]  Invalid command
+2023-06-04 03:33:04,799 [MainThread  ] [ERROR]  Invalid command
+2023-06-04 03:33:05,428 [MainThread  ] [ERROR]  Invalid command
+2023-06-04 03:33:07,633 [MainThread  ] [ERROR]  Invalid command
+2023-06-04 03:33:11,800 [MainThread  ] [ERROR]  Invalid command
+2023-06-04 03:33:20,016 [MainThread  ] [ERROR]  Invalid command
+2023-06-04 03:35:29,204 [MainThread  ] [ERROR]  Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=114.0.5735.90)
+Stacktrace:
+0   chromedriver                        0x00000001048dff48 chromedriver + 4226888
+1   chromedriver                        0x00000001048d84f4 chromedriver + 4195572
+2   chromedriver                        0x000000010451cd68 chromedriver + 281960
+3   chromedriver                        0x00000001044f6ef8 chromedriver + 126712
+4   chromedriver                        0x000000010457be88 chromedriver + 671368
+5   chromedriver                        0x000000010458e45c chromedriver + 746588
+6   chromedriver                        0x000000010454bf1c chromedriver + 474908
+7   chromedriver                        0x000000010454cef4 chromedriver + 478964
+8   chromedriver                        0x00000001048a159c chromedriver + 3970460
+9   chromedriver                        0x00000001048a56f0 chromedriver + 3987184
+10  chromedriver                        0x00000001048ab5b4 chromedriver + 4011444
+11  chromedriver                        0x00000001048a62fc chromedriver + 3990268
+12  chromedriver                        0x000000010487e1c0 chromedriver + 3826112
+13  chromedriver                        0x00000001048c2088 chromedriver + 4104328
+14  chromedriver                        0x00000001048c21e0 chromedriver + 4104672
+15  chromedriver                        0x00000001048d1f28 chromedriver + 4169512
+16  libsystem_pthread.dylib             0x000000019dcf3fa8 _pthread_start + 148
+17  libsystem_pthread.dylib             0x000000019dceeda0 thread_start + 8
+
+2023-06-04 03:35:29,283 [MainThread  ] [ERROR]  Presale URL is invalid
+2023-06-04 03:42:18,442 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 03:42:24,692 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 03:42:32,031 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 03:43:02,927 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 03:43:09,945 [MainThread  ] [ERROR]  HTTPConnectionPool(host='localhost', port=58548): Max retries exceeded with url: /session/ea776acdea26a40b1713a026636a08a5/element/69408FEE2452730A9830D850DBBA4279_element_63/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1079da380>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2023-06-04 03:43:09,953 [MainThread  ] [ERROR]  Presale URL is invalid
+2023-06-04 03:46:19,332 [MainThread  ] [ERROR]  HTTPConnectionPool(host='localhost', port=58788): Max retries exceeded with url: /session/23502314d09a9ccb97e00cbb09a32bee/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x107eb3010>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2023-06-04 03:46:24,341 [MainThread  ] [ERROR]  Presale URL is invalid
+2023-06-04 03:50:26,647 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 03:50:31,718 [MainThread  ] [ERROR]  HTTPConnectionPool(host='localhost', port=59157): Max retries exceeded with url: /session/b9b9a957819816559a2f61359e237f18/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10b990880>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2023-06-04 03:50:31,721 [MainThread  ] [ERROR]  Presale URL is invalid
+2023-06-04 03:51:01,962 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 03:53:54,392 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 03:57:04,008 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 03:57:11,162 [MainThread  ] [ERROR]  HTTPConnectionPool(host='localhost', port=59594): Max retries exceeded with url: /session/69c93c2bfbc20b49d8dbfb12a2cf794a/element/922A3A06E77A23F6B2BB577EA4179C79_element_55/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1155da800>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2023-06-04 03:57:11,167 [MainThread  ] [ERROR]  Presale URL is invalid
+2023-06-04 03:57:49,275 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:00:01,247 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:00:08,837 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:01:38,643 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:01:45,698 [MainThread  ] [ERROR]  HTTPConnectionPool(host='localhost', port=59988): Max retries exceeded with url: /session/9aa0c67148936a2e2734abf9c06a2a91/element/8388C206932D4C592E34C8C3BA99B655_element_63/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1057d2d40>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2023-06-04 04:01:45,704 [MainThread  ] [ERROR]  Presale URL is invalid
+2023-06-04 04:04:46,720 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:04:54,778 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1685815200, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:05:02,122 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:05:09,947 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:05:48,836 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}

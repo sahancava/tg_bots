@@ -38,7 +38,7 @@ app = Flask(__name__)
 
 bot = telegram.Bot(token=BOT_TOKEN)
 
-logger = handle_logger(LOG_PATH)
+logger = handle_logger(LOG_PATH, 'statistics')
 
 @app.route('/{}'.format(WEBHOOK_URL), methods=['POST', 'GET'])
 def webhook():

@@ -1,6 +1,7 @@
 from quart import Quart, request, jsonify
-from helpers import (create_mysql_connection, sendMessage, handle_config)
+from helpers import (create_mysql_connection, sendMessage, sendKeyboardMarkup, handle_config, handle_logger)
 import telegram
+import json
 import requests
 from time import sleep
 from selenium import webdriver
@@ -12,11 +13,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 
 BOT_TOKEN, BOT_CREATOR_ID, LOG_PATH, TELEGRAM_API_BASE_URL, WEBHOOK_URL, WHITELIST_TOKEN, PRESALE_TOKEN = handle_config()
 
 app = Quart(__name__)
 bot = telegram.Bot(token=PRESALE_TOKEN)
+logger = handle_logger(LOG_PATH, 'presale')
 
 @app.route('/presale', methods=['POST'])
 async def webhook():
@@ -33,10 +36,19 @@ async def webhook():
                     MIN_BUY, MAX_BUY, END_TIME, PRESALE_ADDRESS = await get_html(presale_url)
                     if MIN_BUY is not None and MAX_BUY is not None and END_TIME is not None and PRESALE_ADDRESS is not None:
                         await sendMessage(chat_id, "Presale URL is valid", bot)
-                        print(MIN_BUY, MAX_BUY, END_TIME, PRESALE_ADDRESS)
+                        logger.info({'min_buy': MIN_BUY, 'max_buy': MAX_BUY, 'end_time': END_TIME, 'presale_address': PRESALE_ADDRESS})
+                        keyboard = [[InlineKeyboardButton("Выполнено", callback_data='Done')],
+                                    [InlineKeyboardButton("MAC", callback_data='MAC'),
+                                    InlineKeyboardButton("Phone", callback_data='Phone'),
+                                    InlineKeyboardButton("История", callback_data='History')]]
+                        reply_markup = InlineKeyboardMarkup(keyboard)
+
+                        await sendKeyboardMarkup(chat_id, "Выберите действие", bot, reply_markup)
                     else:
+                        logger.error("Presale URL is invalid")
                         await sendMessage(chat_id, "Presale URL is invalid", bot)
                 else:
+                    logger.error("Invalid command")
                     await sendMessage(chat_id, "Invalid command", bot)
     return jsonify({"presale": True}), 200
 
@@ -50,7 +62,7 @@ async def get_html(url):
 
     if response.status_code == 200:
         options = Options()
-        options.headless = True
+        options.add_argument('--headless')
         with webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options) as driver:
             driver.get(url)
             try:
@@ -78,7 +90,6 @@ async def get_html(url):
                     # Scroll to the target row
                     driver.execute_script("arguments[0].scrollIntoView();", target_row)
 
-                    # Wait for the content to load (adjust the sleep duration as needed)
                     sleep(2)
 
                     WebDriverWait(target_row, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'has-text-right')))
@@ -92,8 +103,9 @@ async def get_html(url):
                         MAX_BUY = max_buy_amount.find_element(By.XPATH, './following-sibling::td').text.strip().split(' ')[0]
                         MIN_BUY = min_buy_amount.find_element(By.XPATH, './following-sibling::td').text.strip().split(' ')[0]
                         PRESALE_ADDRESS = presale_address.find_element(By.XPATH, './following-sibling::td').text.strip()
-            
+                        # print('MAX_BUY: ', MAX_BUY, MIN_BUY, END_TIME, PRESALE_ADDRESS)
             except Exception as e:
+                logger.error(e)
                 print(e)
     
     return MIN_BUY, MAX_BUY, END_TIME, PRESALE_ADDRESS

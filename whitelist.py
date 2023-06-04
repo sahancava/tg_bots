@@ -6,12 +6,13 @@ import threading
 # import asyncio
 from quart import Quart, request, jsonify
 import telegram
-from helpers import (create_mysql_connection, sendMessage, handle_config)
+from helpers import (create_mysql_connection, sendMessage, handle_config, handle_logger)
 
 BOT_TOKEN, BOT_CREATOR_ID, LOG_PATH, TELEGRAM_API_BASE_URL, WEBHOOK_URL, WHITELIST_TOKEN, PRESALE_TOKEN = handle_config()
 
 app = Quart(__name__)
 bot = telegram.Bot(token=WHITELIST_TOKEN)
+logger = handle_logger(LOG_PATH, 'whitelist')
 
 @app.route('/whitelist', methods=['POST'])
 async def webhook():
