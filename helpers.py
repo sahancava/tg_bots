@@ -148,7 +148,13 @@ async def sendKeyboardMarkup(chat_id, text: str, _bot, _type):
     except Exception as e:
         async with _bot:
             await _bot.sendMessage(chat_id=chat_id, text='Error: {}'.format(e))
-
+async def sendReplyAPIKwargs(chat_id, text: str, _bot, _type):
+    try:
+        async with _bot:
+            await _bot.send_message(chat_id=chat_id, text=text, api_kwargs=_type)
+    except Exception as e:
+        async with _bot:
+            await _bot.sendMessage(chat_id=chat_id, text='Error: {}'.format(e))
 async def getUserName(chat_id, userID, _bot):
     try:
         async with _bot:

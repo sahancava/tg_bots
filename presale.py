@@ -1,5 +1,5 @@
 from quart import Quart, request, jsonify
-from helpers import (create_mysql_connection, sendMessage, sendKeyboardMarkup, handle_config, handle_logger)
+from helpers import (create_mysql_connection, sendMessage, sendKeyboardMarkup, handle_config, handle_logger, sendReplyAPIKwargs, replyMessage)
 import telegram
 import json
 import requests
@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, MessageEntity
 
 BOT_TOKEN, BOT_CREATOR_ID, LOG_PATH, TELEGRAM_API_BASE_URL, WEBHOOK_URL, WHITELIST_TOKEN, PRESALE_TOKEN = handle_config()
 
@@ -24,11 +24,21 @@ logger = handle_logger(LOG_PATH, 'presale')
 
 presale_valid_flag = False
 
+@staticmethod
+def first_keyboard():
+    keyboard = [[InlineKeyboardButton("Выполнено", callback_data='Done')],
+                [InlineKeyboardButton("MAC", callback_data='MAC'),
+                InlineKeyboardButton("Phone", callback_data='Phone'),
+                InlineKeyboardButton("История", callback_data='History')]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    return reply_markup
+
 @app.route('/presale', methods=['POST'])
 async def webhook():
     data = await request.get_json()
     if 'message' in data:
         if 'text' in data['message']:
+            print('data: ', data)
             message = data['message']['text']
             chat_id = data['message']['chat']['id']
             sender = data['message']['from']['id']
@@ -44,13 +54,8 @@ async def webhook():
                                 await sendMessage(chat_id, "Presale URL is valid", bot)
                                 logger.info({'min_buy': MIN_BUY, 'max_buy': MAX_BUY, 'end_time': END_TIME, 'presale_address': PRESALE_ADDRESS})
                                 presale_valid_flag = True
-                                keyboard = [[InlineKeyboardButton("Выполнено", callback_data='Done')],
-                                            [InlineKeyboardButton("MAC", callback_data='MAC'),
-                                            InlineKeyboardButton("Phone", callback_data='Phone'),
-                                            InlineKeyboardButton("История", callback_data='History')]]
-                                reply_markup = InlineKeyboardMarkup(keyboard)
 
-                                await sendKeyboardMarkup(chat_id, "Выберите действие", bot, reply_markup)
+                                await sendKeyboardMarkup(chat_id, "Выберите действие", bot, first_keyboard())
                         else:
                             logger.error("Presale URL is invalid")
                             await sendMessage(chat_id, "Presale URL is invalid", bot)
@@ -58,8 +63,17 @@ async def webhook():
                     logger.error("Invalid command")
                     await sendMessage(chat_id, "Invalid command", bot)
     if 'callback_query' in data:
-        print('from: ', data['callback_query']['from']['username'])
-        print('message: ', data['callback_query']['data'])
+        print('result_data: ', data)
+        chat_id = data['callback_query']['message']['chat']['id']
+        callback_data = data['callback_query']['data']
+        _from = data['callback_query']['from']['username']
+
+        if callback_data == 'Phone':
+            api_kwargs = {
+                'reply_markup': json.dumps({'force_reply': True}),
+                'text': { 'text': 'Please send your phone number', 'text2': 'Please send your phone number2' },
+            }
+            await sendReplyAPIKwargs(chat_id, "Please send your PinkSale URL", bot, api_kwargs)
     return jsonify({"presale": True}), 200
 
 def get_html(url):
