@@ -60,3 +60,39 @@ Stacktrace:
 2023-06-04 04:05:02,122 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
 2023-06-04 04:05:09,947 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
 2023-06-04 04:05:48,836 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:35:23,523 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:35:31,955 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:35:40,201 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:37:25,814 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:37:34,038 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:37:42,511 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:37:50,887 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:38:46,700 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:38:54,916 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:39:02,836 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:43:34,704 [Thread-2 (pr] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:43:42,889 [Thread-4 (pr] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:47:29,497 [Thread-2 (pr] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:47:37,870 [Thread-4 (pr] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:48:23,162 [Thread-2 (pr] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:48:31,187 [Thread-4 (pr] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:48:45,423 [Thread-2 (pr] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:48:52,757 [Thread-4 (pr] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:49:00,560 [Thread-6 (pr] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:50:14,502 [Thread-2 (pr] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:50:16,458 [Thread-3 (pr] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:50:24,261 [Thread-6 (pr] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 04:53:33,106 [Thread-2 (pr] [ERROR]  no running event loop
+2023-06-04 04:54:36,494 [Thread-2 (pr] [ERROR]  no running event loop
+2023-06-04 04:55:33,873 [Thread-2 (pr] [ERROR]  no running event loop
+2023-06-04 04:55:41,805 [Thread-3 (pr] [ERROR]  no running event loop
+2023-06-04 04:58:39,891 [Thread-2 (pr] [ERROR]  There is no current event loop in thread 'Thread-2 (process_request_thread)'.
+2023-06-04 05:01:00,281 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 05:01:08,117 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 05:02:51,657 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 05:04:08,015 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 05:05:23,462 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 05:06:32,065 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 05:07:32,000 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 05:12:25,712 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-04 05:15:08,142 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}

@@ -4,6 +4,7 @@ import telegram
 import json
 import requests
 from time import sleep
+import asyncio
 from selenium import webdriver
 from datetime import datetime
 from selenium.webdriver.chrome.service import Service
@@ -21,6 +22,8 @@ app = Quart(__name__)
 bot = telegram.Bot(token=PRESALE_TOKEN)
 logger = handle_logger(LOG_PATH, 'presale')
 
+presale_valid_flag = False
+
 @app.route('/presale', methods=['POST'])
 async def webhook():
     data = await request.get_json()
@@ -29,30 +32,37 @@ async def webhook():
             message = data['message']['text']
             chat_id = data['message']['chat']['id']
             sender = data['message']['from']['id']
+
             if message.startswith('/presale') and data['message']['chat']['type'] == 'private' and data['message']['from']['is_bot'] == False:
                 split_message = message.split()
                 if len(split_message) == 2:
                     presale_url = split_message[1]
-                    MIN_BUY, MAX_BUY, END_TIME, PRESALE_ADDRESS = await get_html(presale_url)
-                    if MIN_BUY is not None and MAX_BUY is not None and END_TIME is not None and PRESALE_ADDRESS is not None:
-                        await sendMessage(chat_id, "Presale URL is valid", bot)
-                        logger.info({'min_buy': MIN_BUY, 'max_buy': MAX_BUY, 'end_time': END_TIME, 'presale_address': PRESALE_ADDRESS})
-                        keyboard = [[InlineKeyboardButton("Выполнено", callback_data='Done')],
-                                    [InlineKeyboardButton("MAC", callback_data='MAC'),
-                                    InlineKeyboardButton("Phone", callback_data='Phone'),
-                                    InlineKeyboardButton("История", callback_data='History')]]
-                        reply_markup = InlineKeyboardMarkup(keyboard)
+                    global presale_valid_flag
+                    if not presale_valid_flag:
+                        MIN_BUY, MAX_BUY, END_TIME, PRESALE_ADDRESS = get_html(presale_url)
+                        if MIN_BUY is not None and MAX_BUY is not None and END_TIME is not None and PRESALE_ADDRESS is not None:
+                                await sendMessage(chat_id, "Presale URL is valid", bot)
+                                logger.info({'min_buy': MIN_BUY, 'max_buy': MAX_BUY, 'end_time': END_TIME, 'presale_address': PRESALE_ADDRESS})
+                                presale_valid_flag = True
+                                keyboard = [[InlineKeyboardButton("Выполнено", callback_data='Done')],
+                                            [InlineKeyboardButton("MAC", callback_data='MAC'),
+                                            InlineKeyboardButton("Phone", callback_data='Phone'),
+                                            InlineKeyboardButton("История", callback_data='History')]]
+                                reply_markup = InlineKeyboardMarkup(keyboard)
 
-                        await sendKeyboardMarkup(chat_id, "Выберите действие", bot, reply_markup)
-                    else:
-                        logger.error("Presale URL is invalid")
-                        await sendMessage(chat_id, "Presale URL is invalid", bot)
+                                await sendKeyboardMarkup(chat_id, "Выберите действие", bot, reply_markup)
+                        else:
+                            logger.error("Presale URL is invalid")
+                            await sendMessage(chat_id, "Presale URL is invalid", bot)
                 else:
                     logger.error("Invalid command")
                     await sendMessage(chat_id, "Invalid command", bot)
+    if 'callback_query' in data:
+        print('from: ', data['callback_query']['from']['username'])
+        print('message: ', data['callback_query']['data'])
     return jsonify({"presale": True}), 200
 
-async def get_html(url):
+def get_html(url):
     response = requests.get(url)
 
     END_TIME = None
@@ -103,7 +113,6 @@ async def get_html(url):
                         MAX_BUY = max_buy_amount.find_element(By.XPATH, './following-sibling::td').text.strip().split(' ')[0]
                         MIN_BUY = min_buy_amount.find_element(By.XPATH, './following-sibling::td').text.strip().split(' ')[0]
                         PRESALE_ADDRESS = presale_address.find_element(By.XPATH, './following-sibling::td').text.strip()
-                        # print('MAX_BUY: ', MAX_BUY, MIN_BUY, END_TIME, PRESALE_ADDRESS)
             except Exception as e:
                 logger.error(e)
                 print(e)
