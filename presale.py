@@ -26,10 +26,9 @@ presale_valid_flag = False
 
 @staticmethod
 def first_keyboard():
-    keyboard = [[InlineKeyboardButton("Выполнено", callback_data='Done')],
-                [InlineKeyboardButton("MAC", callback_data='MAC'),
-                InlineKeyboardButton("Phone", callback_data='Phone'),
-                InlineKeyboardButton("История", callback_data='History')]]
+    keyboard = [
+                [InlineKeyboardButton("MAC", callback_data='MAC')]
+            ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     return reply_markup
 
@@ -43,22 +42,23 @@ async def webhook():
             chat_id = data['message']['chat']['id']
             sender = data['message']['from']['id']
 
-            if message.startswith('/presale') and data['message']['chat']['type'] == 'private' and data['message']['from']['is_bot'] == False:
-                split_message = message.split()
-                if len(split_message) == 2:
-                    presale_url = split_message[1]
-                    global presale_valid_flag
-                    if not presale_valid_flag:
-                        MIN_BUY, MAX_BUY, END_TIME, PRESALE_ADDRESS = get_html(presale_url)
-                        if MIN_BUY is not None and MAX_BUY is not None and END_TIME is not None and PRESALE_ADDRESS is not None:
-                                await sendMessage(chat_id, "Presale URL is valid", bot)
-                                logger.info({'min_buy': MIN_BUY, 'max_buy': MAX_BUY, 'end_time': END_TIME, 'presale_address': PRESALE_ADDRESS})
-                                presale_valid_flag = True
+            if message == '/start' and data['message']['chat']['type'] == 'private' and data['message']['from']['is_bot'] == False:
+                # split_message = message.split()
+                if message != None:
+                    await sendKeyboardMarkup(chat_id, "What would you like to do?", bot, first_keyboard())
+                    # presale_url = split_message[1]
+                    # global presale_valid_flag
+                    # if not presale_valid_flag:
+                    #     MIN_BUY, MAX_BUY, END_TIME, PRESALE_ADDRESS = get_html(presale_url)
+                    #     if MIN_BUY is not None and MAX_BUY is not None and END_TIME is not None and PRESALE_ADDRESS is not None:
+                    #             await sendMessage(chat_id, "Presale URL is valid", bot)
+                    #             logger.info({'min_buy': MIN_BUY, 'max_buy': MAX_BUY, 'end_time': END_TIME, 'presale_address': PRESALE_ADDRESS})
+                    #             presale_valid_flag = True
 
-                                await sendKeyboardMarkup(chat_id, "Выберите действие", bot, first_keyboard())
-                        else:
-                            logger.error("Presale URL is invalid")
-                            await sendMessage(chat_id, "Presale URL is invalid", bot)
+                    #             await sendKeyboardMarkup(chat_id, "Выберите действие", bot, first_keyboard())
+                    #     else:
+                    #         logger.error("Presale URL is invalid")
+                    #         await sendMessage(chat_id, "Presale URL is invalid", bot)
                 else:
                     logger.error("Invalid command")
                     await sendMessage(chat_id, "Invalid command", bot)
@@ -68,12 +68,12 @@ async def webhook():
         callback_data = data['callback_query']['data']
         _from = data['callback_query']['from']['username']
 
-        if callback_data == 'Phone':
+        if callback_data == 'MAC':
             api_kwargs = {
                 'reply_markup': json.dumps({'force_reply': True}),
-                'text': { 'text': 'Please send your phone number', 'text2': 'Please send your phone number2' },
+                'text': "Please reply this message with the PinkSale URL",
             }
-            await sendReplyAPIKwargs(chat_id, "Please send your PinkSale URL", bot, api_kwargs)
+            await sendReplyAPIKwargs(chat_id, "Please reply this message with the PinkSale URL", bot, api_kwargs)
     return jsonify({"presale": True}), 200
 
 def get_html(url):
