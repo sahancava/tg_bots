@@ -285,3 +285,15 @@ Stacktrace:
 2023-06-05 03:48:20,296 [MainThread  ] [ERROR]  time data '' does not match format '%Y.%m.%d %H:%M'
 2023-06-05 03:49:16,437 [MainThread  ] [ERROR]  time data '' does not match format '%Y.%m.%d %H:%M'
 2023-06-05 03:49:47,622 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 03:53:21,241 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 03:53:30,024 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 03:53:40,782 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 03:59:10,278 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 03:59:23,187 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1685815200, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 04:00:00,137 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 04:03:49,384 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1685815200, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 04:03:49,786 [MainThread  ] [INFO ]  {'wallet_address': '0x4d32694B33BCcb00aD4F79Be46ddF0302d05E33b', 'private_key': '0xf1cc54fe756bd66efb25a7b2be1edb3488dc666c536742cb7af40559740ea0a7'}
+2023-06-05 04:05:01,789 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1685815200, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 04:05:02,172 [MainThread  ] [INFO ]  {'wallet_address': '0x7043f8FCd57728A73F7dcAd223eBd166409B0dFa', 'private_key': '0x937829c5e177899149fae815baef00b69659ea04e307e3c1887bc65371600358'}
+2023-06-05 04:05:38,507 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 04:05:38,907 [MainThread  ] [INFO ]  {'wallet_address': '0xA94AfA477002B0eB4aC19B23Dba8a7Af88478f13', 'private_key': '0xb33206afc395fa938100a6ae5d3d4a6a7bb1641ab0d3c22e9c00c59b839a5cbb'}

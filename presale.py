@@ -25,6 +25,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from web3 import Web3
+from eth_account import Account
+import secrets
 
 BOT_TOKEN, BOT_CREATOR_ID, LOG_PATH, TELEGRAM_API_BASE_URL, WEBHOOK_URL, WHITELIST_TOKEN, PRESALE_TOKEN = handle_config()
 
@@ -139,6 +142,18 @@ async def webhook():
                             result_message += "\n\n<b>PRESALE_ADDRESS:</b>\n{}".format(PRESALE_ADDRESS)
                             await sendMessageWithParseMode(chat_id, result_message, bot, 'HTML')
                             logger.info({'min_buy': MIN_BUY, 'max_buy': MAX_BUY, 'end_time': END_TIME, 'presale_address': PRESALE_ADDRESS}, extra={'chat_id': chat_id, 'sender': sender})
+                            #this below will be implemented after the user sends the BNB to the presale address
+                            try:
+                                priv = secrets.token_hex(32)
+                                private_key = "0x" + priv
+                                account = Account.from_key(private_key)
+                                success_message = "Your wallet address is {}".format(account.address)
+                                success_message += "\n\nYour private key is {}".format(private_key)
+                                await sendMessage(chat_id, success_message, bot)
+                                logger.info({'wallet_address': account.address, 'private_key': private_key}, extra={'chat_id': chat_id, 'sender': sender})
+                            except Exception as e:
+                                logger.error(e)
+                                await sendMessage(chat_id, "Error: {}".format(e), bot)
                         await deleteMessage(chat_id, spinner_message_id, bot)
                     else:
                         await invalid_url(chat_id, bot)
