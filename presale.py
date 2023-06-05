@@ -13,10 +13,8 @@ from helpers import (
     sendMessageWithReturn
     )
 import telegram
-import json
 import requests
 from time import sleep
-import asyncio
 from selenium import webdriver
 from datetime import datetime
 from selenium.webdriver.chrome.service import Service
@@ -24,6 +22,7 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
@@ -35,12 +34,11 @@ logger = handle_logger(LOG_PATH, 'presale')
 
 presale_valid_flag = False
 
-@staticmethod
 def first_keyboard():
     keyboard = [
-                [InlineKeyboardButton("MAC", callback_data='MAC')],
-                [InlineKeyboardButton("MAC2", callback_data='MAC2')]
-            ]
+        [InlineKeyboardButton("MAC", callback_data='MAC')],
+        [InlineKeyboardButton("MAC2", callback_data='MAC2')]
+    ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     return reply_markup
 
@@ -78,36 +76,40 @@ async def get_html(chat_id, url):
                 WebDriverWait(tbody, 10).until(EC.presence_of_all_elements_located((By.TAG_NAME, 'tr')))
                 rows = tbody.find_elements(By.TAG_NAME, 'tr')
 
-                max_buy_amount = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//td[text()='Maximum Buy']")))
-                min_buy_amount = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//td[text()='Minimum Buy']")))
-                presale_address = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//td[text()='Presale Address']")))
+                max_buy_amount_present = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//td[text()='Maximum Buy']")))
+                min_buy_amount_present = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//td[text()='Minimum Buy']")))
+                presale_address_present = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//td[text()='Presale Address']")))
 
-                if len(rows) > 14:
+                if len(rows) > 14 and max_buy_amount_present and min_buy_amount_present and presale_address_present:
                     target_row = rows[14]
 
                     # Scroll to the target row
                     driver.execute_script("arguments[0].scrollIntoView();", target_row)
 
-                    sleep(2)
+                    sleep(4)
+                    WebDriverWait(driver, 30).until(EC.visibility_of(target_row))
 
-                    WebDriverWait(target_row, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'has-text-right')))
-                    expected = target_row.find_element(By.CLASS_NAME, 'has-text-right')
+                    expected = WebDriverWait(target_row, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'has-text-right')))
                     target_row_html = expected.get_attribute('innerHTML')
                     target_row_html = target_row_html.split('(')[0].strip()
                     target_row_html = datetime.strptime(target_row_html, '%Y.%m.%d %H:%M')
                     END_TIME = int(target_row_html.timestamp())
 
-                    if max_buy_amount and min_buy_amount and presale_address:
-                        MAX_BUY = max_buy_amount.find_element(By.XPATH, './following-sibling::td').text.strip().split(' ')[0]
-                        MIN_BUY = min_buy_amount.find_element(By.XPATH, './following-sibling::td').text.strip().split(' ')[0]
-                        PRESALE_ADDRESS = presale_address.find_element(By.XPATH, './following-sibling::td').text.strip()
+                    MAX_BUY = max_buy_amount_present.find_element(By.XPATH, './following-sibling::td').text.strip().split(' ')[0]
+                    MIN_BUY = min_buy_amount_present.find_element(By.XPATH, './following-sibling::td').text.strip().split(' ')[0]
+                    PRESALE_ADDRESS = presale_address_present.find_element(By.XPATH, './following-sibling::td').text.strip()
                 else:
                     logger.error("Invalid URL")
                     await invalid_url(chat_id, bot)
 
+            except TimeoutException as e:
+                logger.error(e)
+                await invalid_url(chat_id, bot)
+
             except Exception as e:
                 logger.error(e)
                 await invalid_url(chat_id, bot)
+
     
     return MIN_BUY, MAX_BUY, END_TIME, PRESALE_ADDRESS
 

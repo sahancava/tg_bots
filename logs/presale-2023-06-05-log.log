@@ -272,3 +272,16 @@ Stacktrace:
 17  libsystem_pthread.dylib             0x000000019dceeda0 thread_start + 8
 
 2023-06-05 03:15:30,212 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 03:35:33,865 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1685815200, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 03:39:38,115 [MainThread  ] [ERROR]  time data '' does not match format '%Y.%m.%d %H:%M'
+2023-06-05 03:40:29,553 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1685815200, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 03:42:06,233 [MainThread  ] [ERROR]  time data '' does not match format '%Y.%m.%d %H:%M'
+2023-06-05 03:42:54,634 [MainThread  ] [ERROR]  time data '' does not match format '%Y.%m.%d %H:%M'
+2023-06-05 03:43:06,782 [MainThread  ] [ERROR]  time data '' does not match format '%Y.%m.%d %H:%M'
+2023-06-05 03:43:46,372 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 03:44:21,169 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 03:47:30,820 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1685815200, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 03:47:43,717 [MainThread  ] [ERROR]  time data '' does not match format '%Y.%m.%d %H:%M'
+2023-06-05 03:48:20,296 [MainThread  ] [ERROR]  time data '' does not match format '%Y.%m.%d %H:%M'
+2023-06-05 03:49:16,437 [MainThread  ] [ERROR]  time data '' does not match format '%Y.%m.%d %H:%M'
+2023-06-05 03:49:47,622 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
