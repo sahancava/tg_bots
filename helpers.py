@@ -134,6 +134,20 @@ async def getChatAdministrators(chat_id, _sender, _bot):
     except Exception as e:
         async with _bot:
             await _bot.sendMessage(chat_id=chat_id, text='Error: {}'.format(e))
+async def sendMessageWithParseMode(chat_id, text: str, _bot, _parse_mode):
+    try:
+        async with _bot:
+            await _bot.send_message(chat_id=chat_id, text=text, parse_mode=_parse_mode)
+    except Exception as e:
+        async with _bot:
+            await _bot.sendMessage(chat_id=chat_id, text='Error: {}'.format(e))
+async def sendMessageWithDisableWebPagePreview(chat_id, text: str, _bot):
+    try:
+        async with _bot:
+            await _bot.send_message(chat_id=chat_id, text=text, disable_web_page_preview=True)
+    except Exception as e:
+        async with _bot:
+            await _bot.sendMessage(chat_id=chat_id, text='Error: {}'.format(e))
 async def sendMessage(chat_id, text: str, _bot):
     try:
         async with _bot:
@@ -141,6 +155,15 @@ async def sendMessage(chat_id, text: str, _bot):
     except Exception as e:
         async with _bot:
             await _bot.sendMessage(chat_id=chat_id, text='Error: {}'.format(e))
+async def sendMessageWithReturn(chat_id, text: str, _bot):
+    result = None
+    try:
+        async with _bot:
+            result = await _bot.send_message(chat_id=chat_id, text=text)
+    except Exception as e:
+        async with _bot:
+            result = await _bot.sendMessage(chat_id=chat_id, text='Error: {}'.format(e))
+    return result
 async def sendKeyboardMarkup(chat_id, text: str, _bot, _type):
     try:
         async with _bot:
@@ -167,6 +190,13 @@ async def replyMessage(chat_id, text: str, message_id, _bot):
     try:
         async with _bot:
             await _bot.send_message(chat_id=chat_id, text=text, reply_to_message_id=message_id)
+    except Exception as e:
+        async with _bot:
+            await _bot.sendMessage(chat_id=chat_id, text='Error: {}'.format(e))
+async def deleteMessage(chat_id, message_id, _bot):
+    try:
+        async with _bot:
+            await _bot.delete_message(chat_id=chat_id, message_id=message_id)
     except Exception as e:
         async with _bot:
             await _bot.sendMessage(chat_id=chat_id, text='Error: {}'.format(e))

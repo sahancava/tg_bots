@@ -1,5 +1,17 @@
 from quart import Quart, request, jsonify
-from helpers import (create_mysql_connection, sendMessage, sendKeyboardMarkup, handle_config, handle_logger, sendReplyAPIKwargs, replyMessage)
+from helpers import (
+    create_mysql_connection,
+    sendMessage,
+    sendKeyboardMarkup,
+    handle_config,
+    handle_logger,
+    sendReplyAPIKwargs,
+    replyMessage,
+    sendMessageWithParseMode,
+    sendMessageWithDisableWebPagePreview,
+    deleteMessage,
+    sendMessageWithReturn
+    )
 import telegram
 import json
 import requests
@@ -13,8 +25,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from bs4 import BeautifulSoup
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, MessageEntity
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 BOT_TOKEN, BOT_CREATOR_ID, LOG_PATH, TELEGRAM_API_BASE_URL, WEBHOOK_URL, WHITELIST_TOKEN, PRESALE_TOKEN = handle_config()
 
@@ -27,56 +38,19 @@ presale_valid_flag = False
 @staticmethod
 def first_keyboard():
     keyboard = [
-                [InlineKeyboardButton("MAC", callback_data='MAC')]
+                [InlineKeyboardButton("MAC", callback_data='MAC')],
+                [InlineKeyboardButton("MAC2", callback_data='MAC2')]
             ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     return reply_markup
 
-@app.route('/presale', methods=['POST'])
-async def webhook():
-    data = await request.get_json()
-    if 'message' in data:
-        if 'text' in data['message']:
-            print('data: ', data)
-            message = data['message']['text']
-            chat_id = data['message']['chat']['id']
-            sender = data['message']['from']['id']
+async def invalid_url(chat_id, bot):
+    error_message = "Invalid URL\n"
+    error_message += "Sample URL is below: \n"
+    error_message += "https://www.pinksale.finance/launchpad/0x0000000000000000000000000000000000000000?chain=BSC"
+    await sendMessageWithDisableWebPagePreview(chat_id, error_message, bot)
 
-            if message == '/start' and data['message']['chat']['type'] == 'private' and data['message']['from']['is_bot'] == False:
-                # split_message = message.split()
-                if message != None:
-                    await sendKeyboardMarkup(chat_id, "What would you like to do?", bot, first_keyboard())
-                    # presale_url = split_message[1]
-                    # global presale_valid_flag
-                    # if not presale_valid_flag:
-                    #     MIN_BUY, MAX_BUY, END_TIME, PRESALE_ADDRESS = get_html(presale_url)
-                    #     if MIN_BUY is not None and MAX_BUY is not None and END_TIME is not None and PRESALE_ADDRESS is not None:
-                    #             await sendMessage(chat_id, "Presale URL is valid", bot)
-                    #             logger.info({'min_buy': MIN_BUY, 'max_buy': MAX_BUY, 'end_time': END_TIME, 'presale_address': PRESALE_ADDRESS})
-                    #             presale_valid_flag = True
-
-                    #             await sendKeyboardMarkup(chat_id, "Выберите действие", bot, first_keyboard())
-                    #     else:
-                    #         logger.error("Presale URL is invalid")
-                    #         await sendMessage(chat_id, "Presale URL is invalid", bot)
-                else:
-                    logger.error("Invalid command")
-                    await sendMessage(chat_id, "Invalid command", bot)
-    if 'callback_query' in data:
-        print('result_data: ', data)
-        chat_id = data['callback_query']['message']['chat']['id']
-        callback_data = data['callback_query']['data']
-        _from = data['callback_query']['from']['username']
-
-        if callback_data == 'MAC':
-            api_kwargs = {
-                'reply_markup': json.dumps({'force_reply': True}),
-                'text': "Please reply this message with the PinkSale URL",
-            }
-            await sendReplyAPIKwargs(chat_id, "Please reply this message with the PinkSale URL", bot, api_kwargs)
-    return jsonify({"presale": True}), 200
-
-def get_html(url):
+async def get_html(chat_id, url):
     response = requests.get(url)
 
     END_TIME = None
@@ -127,11 +101,63 @@ def get_html(url):
                         MAX_BUY = max_buy_amount.find_element(By.XPATH, './following-sibling::td').text.strip().split(' ')[0]
                         MIN_BUY = min_buy_amount.find_element(By.XPATH, './following-sibling::td').text.strip().split(' ')[0]
                         PRESALE_ADDRESS = presale_address.find_element(By.XPATH, './following-sibling::td').text.strip()
+                else:
+                    logger.error("Invalid URL")
+                    await invalid_url(chat_id, bot)
+
             except Exception as e:
                 logger.error(e)
-                print(e)
+                await invalid_url(chat_id, bot)
     
     return MIN_BUY, MAX_BUY, END_TIME, PRESALE_ADDRESS
-    
+
+@app.route('/presale', methods=['POST'])
+async def webhook():
+    data = await request.get_json()
+    if 'message' in data:
+        if 'text' in data['message']:
+            message = data['message']['text']
+            chat_id = data['message']['chat']['id']
+            sender = data['message']['from']['id']
+
+            if message == '/start' and data['message']['chat']['type'] == 'private' and data['message']['from']['is_bot'] == False:
+                await sendKeyboardMarkup(chat_id, "What would you like to do?", bot, first_keyboard())
+            elif 'reply_to_message' in data['message'] and data['message']['chat']['type'] == 'private' and data['message']['from']['is_bot'] == False:
+                if data['message']['reply_to_message']['text'] == 'Please reply this message with the PinkSale URL':
+                    if "https://www.pinksale.finance/launchpad/" in message:
+                        message_replied_for = data['message']['reply_to_message']['text']
+                        spinner_message = await sendMessageWithReturn(chat_id, "Querying the URL... ⏳", bot)
+                        spinner_message_id = spinner_message['message_id']
+                        MIN_BUY, MAX_BUY, END_TIME, PRESALE_ADDRESS = await get_html(chat_id, message)
+                        if MIN_BUY is not None and MAX_BUY is not None and END_TIME is not None and PRESALE_ADDRESS is not None:
+                            result_message = "⭐️        <b>[----DETAILS----]</b>        ⭐️\n"
+                            result_message += "\n\n<b>MIN_BUY:</b>\n{}".format(MIN_BUY)
+                            result_message += "\n\n<b>MAX_BUY:</b>\n{}".format(MAX_BUY)
+                            result_message += "\n\n<b>END_TIME:</b>\n{}".format(END_TIME)
+                            result_message += "\n\n<b>PRESALE_ADDRESS:</b>\n{}".format(PRESALE_ADDRESS)
+                            await sendMessageWithParseMode(chat_id, result_message, bot, 'HTML')
+                            logger.info({'min_buy': MIN_BUY, 'max_buy': MAX_BUY, 'end_time': END_TIME, 'presale_address': PRESALE_ADDRESS}, extra={'chat_id': chat_id, 'sender': sender})
+                        await deleteMessage(chat_id, spinner_message_id, bot)
+                    else:
+                        await invalid_url(chat_id, bot)
+                        logger.error("Invalid URL by {}".format(sender))
+            else:
+                logger.error("Invalid command")
+                await sendMessage(chat_id, "Invalid command", bot)
+    if 'callback_query' in data:
+        chat_id = data['callback_query']['message']['chat']['id']
+        callback_data = data['callback_query']['data']
+        _from = data['callback_query']['from']['username']
+
+        if callback_data == 'MAC':
+            api_kwargs = {
+                'reply_markup': {
+                    'force_reply': True
+                },
+                'text': "Please reply this message with the PinkSale URL",
+            }
+            await sendReplyAPIKwargs(chat_id, "Please reply this message with the PinkSale URL", bot, api_kwargs)
+    return jsonify({"presale": True}), 200
+
 if __name__ == '__main__':
     app.run(debug=True, port=8443)

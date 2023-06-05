@@ -1,0 +1,274 @@
+2023-06-05 00:10:04,326 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 00:10:25,362 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 00:32:27,754 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 00:42:04,510 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 00:47:16,884 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 00:56:57,801 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 01:24:07,311 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 01:25:21,779 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 01:27:10,533 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 01:28:24,171 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 01:29:55,760 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 01:31:07,528 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 01:32:33,570 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 01:33:19,912 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 01:33:19,993 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 01:33:42,652 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 01:50:57,198 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 02:49:40,427 [MainThread  ] [ERROR]  Invalid URL by 5616472793
+2023-06-05 02:50:13,830 [MainThread  ] [ERROR]  Message: 
+Stacktrace:
+0   chromedriver                        0x00000001005cff48 chromedriver + 4226888
+1   chromedriver                        0x00000001005c84f4 chromedriver + 4195572
+2   chromedriver                        0x000000010020cd68 chromedriver + 281960
+3   chromedriver                        0x0000000100247fc8 chromedriver + 524232
+4   chromedriver                        0x000000010023d734 chromedriver + 481076
+5   chromedriver                        0x000000010027ec58 chromedriver + 748632
+6   chromedriver                        0x000000010023bf1c chromedriver + 474908
+7   chromedriver                        0x000000010023cef4 chromedriver + 478964
+8   chromedriver                        0x000000010059159c chromedriver + 3970460
+9   chromedriver                        0x00000001005956f0 chromedriver + 3987184
+10  chromedriver                        0x000000010059b5b4 chromedriver + 4011444
+11  chromedriver                        0x00000001005962fc chromedriver + 3990268
+12  chromedriver                        0x000000010056e1c0 chromedriver + 3826112
+13  chromedriver                        0x00000001005b2088 chromedriver + 4104328
+14  chromedriver                        0x00000001005b21e0 chromedriver + 4104672
+15  chromedriver                        0x00000001005c1f28 chromedriver + 4169512
+16  libsystem_pthread.dylib             0x000000019dcf3fa8 _pthread_start + 148
+17  libsystem_pthread.dylib             0x000000019dceeda0 thread_start + 8
+
+2023-06-05 02:53:11,888 [MainThread  ] [ERROR]  Message: 
+Stacktrace:
+0   chromedriver                        0x00000001052cff48 chromedriver + 4226888
+1   chromedriver                        0x00000001052c84f4 chromedriver + 4195572
+2   chromedriver                        0x0000000104f0cd68 chromedriver + 281960
+3   chromedriver                        0x0000000104f47fc8 chromedriver + 524232
+4   chromedriver                        0x0000000104f3d734 chromedriver + 481076
+5   chromedriver                        0x0000000104f7ec58 chromedriver + 748632
+6   chromedriver                        0x0000000104f3bf1c chromedriver + 474908
+7   chromedriver                        0x0000000104f3cef4 chromedriver + 478964
+8   chromedriver                        0x000000010529159c chromedriver + 3970460
+9   chromedriver                        0x00000001052956f0 chromedriver + 3987184
+10  chromedriver                        0x000000010529b5b4 chromedriver + 4011444
+11  chromedriver                        0x00000001052962fc chromedriver + 3990268
+12  chromedriver                        0x000000010526e1c0 chromedriver + 3826112
+13  chromedriver                        0x00000001052b2088 chromedriver + 4104328
+14  chromedriver                        0x00000001052b21e0 chromedriver + 4104672
+15  chromedriver                        0x00000001052c1f28 chromedriver + 4169512
+16  libsystem_pthread.dylib             0x000000019dcf3fa8 _pthread_start + 148
+17  libsystem_pthread.dylib             0x000000019dceeda0 thread_start + 8
+
+2023-06-05 02:56:41,845 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-05 02:57:04,600 [MainThread  ] [ERROR]  Message: 
+Stacktrace:
+0   chromedriver                        0x00000001047eff48 chromedriver + 4226888
+1   chromedriver                        0x00000001047e84f4 chromedriver + 4195572
+2   chromedriver                        0x000000010442cd68 chromedriver + 281960
+3   chromedriver                        0x0000000104467fc8 chromedriver + 524232
+4   chromedriver                        0x000000010445d734 chromedriver + 481076
+5   chromedriver                        0x000000010449ec58 chromedriver + 748632
+6   chromedriver                        0x000000010445bf1c chromedriver + 474908
+7   chromedriver                        0x000000010445cef4 chromedriver + 478964
+8   chromedriver                        0x00000001047b159c chromedriver + 3970460
+9   chromedriver                        0x00000001047b56f0 chromedriver + 3987184
+10  chromedriver                        0x00000001047bb5b4 chromedriver + 4011444
+11  chromedriver                        0x00000001047b62fc chromedriver + 3990268
+12  chromedriver                        0x000000010478e1c0 chromedriver + 3826112
+13  chromedriver                        0x00000001047d2088 chromedriver + 4104328
+14  chromedriver                        0x00000001047d21e0 chromedriver + 4104672
+15  chromedriver                        0x00000001047e1f28 chromedriver + 4169512
+16  libsystem_pthread.dylib             0x000000019dcf3fa8 _pthread_start + 148
+17  libsystem_pthread.dylib             0x000000019dceeda0 thread_start + 8
+
+2023-06-05 02:59:56,447 [MainThread  ] [ERROR]  Invalid command
+2023-06-05 03:00:16,938 [MainThread  ] [ERROR]  Message: 
+Stacktrace:
+0   chromedriver                        0x0000000102a7ff48 chromedriver + 4226888
+1   chromedriver                        0x0000000102a784f4 chromedriver + 4195572
+2   chromedriver                        0x00000001026bcd68 chromedriver + 281960
+3   chromedriver                        0x00000001026f7fc8 chromedriver + 524232
+4   chromedriver                        0x00000001026ed734 chromedriver + 481076
+5   chromedriver                        0x000000010272ec58 chromedriver + 748632
+6   chromedriver                        0x00000001026ebf1c chromedriver + 474908
+7   chromedriver                        0x00000001026ecef4 chromedriver + 478964
+8   chromedriver                        0x0000000102a4159c chromedriver + 3970460
+9   chromedriver                        0x0000000102a456f0 chromedriver + 3987184
+10  chromedriver                        0x0000000102a4b5b4 chromedriver + 4011444
+11  chromedriver                        0x0000000102a462fc chromedriver + 3990268
+12  chromedriver                        0x0000000102a1e1c0 chromedriver + 3826112
+13  chromedriver                        0x0000000102a62088 chromedriver + 4104328
+14  chromedriver                        0x0000000102a621e0 chromedriver + 4104672
+15  chromedriver                        0x0000000102a71f28 chromedriver + 4169512
+16  libsystem_pthread.dylib             0x000000019dcf3fa8 _pthread_start + 148
+17  libsystem_pthread.dylib             0x000000019dceeda0 thread_start + 8
+
+2023-06-05 03:03:12,531 [MainThread  ] [ERROR]  Message: 
+Stacktrace:
+0   chromedriver                        0x00000001052dbf48 chromedriver + 4226888
+1   chromedriver                        0x00000001052d44f4 chromedriver + 4195572
+2   chromedriver                        0x0000000104f18d68 chromedriver + 281960
+3   chromedriver                        0x0000000104f53fc8 chromedriver + 524232
+4   chromedriver                        0x0000000104f49734 chromedriver + 481076
+5   chromedriver                        0x0000000104f8ac58 chromedriver + 748632
+6   chromedriver                        0x0000000104f47f1c chromedriver + 474908
+7   chromedriver                        0x0000000104f48ef4 chromedriver + 478964
+8   chromedriver                        0x000000010529d59c chromedriver + 3970460
+9   chromedriver                        0x00000001052a16f0 chromedriver + 3987184
+10  chromedriver                        0x00000001052a75b4 chromedriver + 4011444
+11  chromedriver                        0x00000001052a22fc chromedriver + 3990268
+12  chromedriver                        0x000000010527a1c0 chromedriver + 3826112
+13  chromedriver                        0x00000001052be088 chromedriver + 4104328
+14  chromedriver                        0x00000001052be1e0 chromedriver + 4104672
+15  chromedriver                        0x00000001052cdf28 chromedriver + 4169512
+16  libsystem_pthread.dylib             0x000000019dcf3fa8 _pthread_start + 148
+17  libsystem_pthread.dylib             0x000000019dceeda0 thread_start + 8
+
+2023-06-05 03:09:32,996 [MainThread  ] [ERROR]  Message: 
+Stacktrace:
+0   chromedriver                        0x000000010240ff48 chromedriver + 4226888
+1   chromedriver                        0x00000001024084f4 chromedriver + 4195572
+2   chromedriver                        0x000000010204cd68 chromedriver + 281960
+3   chromedriver                        0x0000000102087fc8 chromedriver + 524232
+4   chromedriver                        0x000000010207d734 chromedriver + 481076
+5   chromedriver                        0x00000001020bec58 chromedriver + 748632
+6   chromedriver                        0x000000010207bf1c chromedriver + 474908
+7   chromedriver                        0x000000010207cef4 chromedriver + 478964
+8   chromedriver                        0x00000001023d159c chromedriver + 3970460
+9   chromedriver                        0x00000001023d56f0 chromedriver + 3987184
+10  chromedriver                        0x00000001023db5b4 chromedriver + 4011444
+11  chromedriver                        0x00000001023d62fc chromedriver + 3990268
+12  chromedriver                        0x00000001023ae1c0 chromedriver + 3826112
+13  chromedriver                        0x00000001023f2088 chromedriver + 4104328
+14  chromedriver                        0x00000001023f21e0 chromedriver + 4104672
+15  chromedriver                        0x0000000102401f28 chromedriver + 4169512
+16  libsystem_pthread.dylib             0x000000019dcf3fa8 _pthread_start + 148
+17  libsystem_pthread.dylib             0x000000019dceeda0 thread_start + 8
+
+2023-06-05 03:09:50,135 [MainThread  ] [ERROR]  Message: 
+Stacktrace:
+0   chromedriver                        0x00000001031a7f48 chromedriver + 4226888
+1   chromedriver                        0x00000001031a04f4 chromedriver + 4195572
+2   chromedriver                        0x0000000102de4d68 chromedriver + 281960
+3   chromedriver                        0x0000000102e1ffc8 chromedriver + 524232
+4   chromedriver                        0x0000000102e15734 chromedriver + 481076
+5   chromedriver                        0x0000000102e56c58 chromedriver + 748632
+6   chromedriver                        0x0000000102e13f1c chromedriver + 474908
+7   chromedriver                        0x0000000102e14ef4 chromedriver + 478964
+8   chromedriver                        0x000000010316959c chromedriver + 3970460
+9   chromedriver                        0x000000010316d6f0 chromedriver + 3987184
+10  chromedriver                        0x00000001031735b4 chromedriver + 4011444
+11  chromedriver                        0x000000010316e2fc chromedriver + 3990268
+12  chromedriver                        0x00000001031461c0 chromedriver + 3826112
+13  chromedriver                        0x000000010318a088 chromedriver + 4104328
+14  chromedriver                        0x000000010318a1e0 chromedriver + 4104672
+15  chromedriver                        0x0000000103199f28 chromedriver + 4169512
+16  libsystem_pthread.dylib             0x000000019dcf3fa8 _pthread_start + 148
+17  libsystem_pthread.dylib             0x000000019dceeda0 thread_start + 8
+
+2023-06-05 03:10:03,223 [MainThread  ] [ERROR]  HTTPConnectionPool(host='localhost', port=63966): Max retries exceeded with url: /session/aaa44c3eb58e575794d645964db1901d/element/20800A3D0F221CA59454FBB36AA16106_element_32/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103de38e0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2023-06-05 03:10:21,868 [MainThread  ] [ERROR]  Message: 
+Stacktrace:
+0   chromedriver                        0x00000001011e7f48 chromedriver + 4226888
+1   chromedriver                        0x00000001011e04f4 chromedriver + 4195572
+2   chromedriver                        0x0000000100e24d68 chromedriver + 281960
+3   chromedriver                        0x0000000100e5ffc8 chromedriver + 524232
+4   chromedriver                        0x0000000100e55734 chromedriver + 481076
+5   chromedriver                        0x0000000100e96c58 chromedriver + 748632
+6   chromedriver                        0x0000000100e53f1c chromedriver + 474908
+7   chromedriver                        0x0000000100e54ef4 chromedriver + 478964
+8   chromedriver                        0x00000001011a959c chromedriver + 3970460
+9   chromedriver                        0x00000001011ad6f0 chromedriver + 3987184
+10  chromedriver                        0x00000001011b35b4 chromedriver + 4011444
+11  chromedriver                        0x00000001011ae2fc chromedriver + 3990268
+12  chromedriver                        0x00000001011861c0 chromedriver + 3826112
+13  chromedriver                        0x00000001011ca088 chromedriver + 4104328
+14  chromedriver                        0x00000001011ca1e0 chromedriver + 4104672
+15  chromedriver                        0x00000001011d9f28 chromedriver + 4169512
+16  libsystem_pthread.dylib             0x000000019dcf3fa8 _pthread_start + 148
+17  libsystem_pthread.dylib             0x000000019dceeda0 thread_start + 8
+
+2023-06-05 03:10:43,824 [MainThread  ] [ERROR]  Message: 
+Stacktrace:
+0   chromedriver                        0x0000000102d6ff48 chromedriver + 4226888
+1   chromedriver                        0x0000000102d684f4 chromedriver + 4195572
+2   chromedriver                        0x00000001029acd68 chromedriver + 281960
+3   chromedriver                        0x00000001029e7fc8 chromedriver + 524232
+4   chromedriver                        0x00000001029dd734 chromedriver + 481076
+5   chromedriver                        0x0000000102a1ec58 chromedriver + 748632
+6   chromedriver                        0x00000001029dbf1c chromedriver + 474908
+7   chromedriver                        0x00000001029dcef4 chromedriver + 478964
+8   chromedriver                        0x0000000102d3159c chromedriver + 3970460
+9   chromedriver                        0x0000000102d356f0 chromedriver + 3987184
+10  chromedriver                        0x0000000102d3b5b4 chromedriver + 4011444
+11  chromedriver                        0x0000000102d362fc chromedriver + 3990268
+12  chromedriver                        0x0000000102d0e1c0 chromedriver + 3826112
+13  chromedriver                        0x0000000102d52088 chromedriver + 4104328
+14  chromedriver                        0x0000000102d521e0 chromedriver + 4104672
+15  chromedriver                        0x0000000102d61f28 chromedriver + 4169512
+16  libsystem_pthread.dylib             0x000000019dcf3fa8 _pthread_start + 148
+17  libsystem_pthread.dylib             0x000000019dceeda0 thread_start + 8
+
+2023-06-05 03:13:28,088 [MainThread  ] [ERROR]  Message: 
+Stacktrace:
+0   chromedriver                        0x00000001031f3f48 chromedriver + 4226888
+1   chromedriver                        0x00000001031ec4f4 chromedriver + 4195572
+2   chromedriver                        0x0000000102e30d68 chromedriver + 281960
+3   chromedriver                        0x0000000102e6bfc8 chromedriver + 524232
+4   chromedriver                        0x0000000102e61734 chromedriver + 481076
+5   chromedriver                        0x0000000102ea2c58 chromedriver + 748632
+6   chromedriver                        0x0000000102e5ff1c chromedriver + 474908
+7   chromedriver                        0x0000000102e60ef4 chromedriver + 478964
+8   chromedriver                        0x00000001031b559c chromedriver + 3970460
+9   chromedriver                        0x00000001031b96f0 chromedriver + 3987184
+10  chromedriver                        0x00000001031bf5b4 chromedriver + 4011444
+11  chromedriver                        0x00000001031ba2fc chromedriver + 3990268
+12  chromedriver                        0x00000001031921c0 chromedriver + 3826112
+13  chromedriver                        0x00000001031d6088 chromedriver + 4104328
+14  chromedriver                        0x00000001031d61e0 chromedriver + 4104672
+15  chromedriver                        0x00000001031e5f28 chromedriver + 4169512
+16  libsystem_pthread.dylib             0x000000019dcf3fa8 _pthread_start + 148
+17  libsystem_pthread.dylib             0x000000019dceeda0 thread_start + 8
+
+2023-06-05 03:14:24,439 [MainThread  ] [ERROR]  Message: 
+Stacktrace:
+0   chromedriver                        0x0000000103373f48 chromedriver + 4226888
+1   chromedriver                        0x000000010336c4f4 chromedriver + 4195572
+2   chromedriver                        0x0000000102fb0d68 chromedriver + 281960
+3   chromedriver                        0x0000000102febfc8 chromedriver + 524232
+4   chromedriver                        0x0000000102fe1734 chromedriver + 481076
+5   chromedriver                        0x0000000103022c58 chromedriver + 748632
+6   chromedriver                        0x0000000102fdff1c chromedriver + 474908
+7   chromedriver                        0x0000000102fe0ef4 chromedriver + 478964
+8   chromedriver                        0x000000010333559c chromedriver + 3970460
+9   chromedriver                        0x00000001033396f0 chromedriver + 3987184
+10  chromedriver                        0x000000010333f5b4 chromedriver + 4011444
+11  chromedriver                        0x000000010333a2fc chromedriver + 3990268
+12  chromedriver                        0x00000001033121c0 chromedriver + 3826112
+13  chromedriver                        0x0000000103356088 chromedriver + 4104328
+14  chromedriver                        0x00000001033561e0 chromedriver + 4104672
+15  chromedriver                        0x0000000103365f28 chromedriver + 4169512
+16  libsystem_pthread.dylib             0x000000019dcf3fa8 _pthread_start + 148
+17  libsystem_pthread.dylib             0x000000019dceeda0 thread_start + 8
+
+2023-06-05 03:14:57,750 [MainThread  ] [ERROR]  Message: 
+Stacktrace:
+0   chromedriver                        0x00000001044a7f48 chromedriver + 4226888
+1   chromedriver                        0x00000001044a04f4 chromedriver + 4195572
+2   chromedriver                        0x00000001040e4d68 chromedriver + 281960
+3   chromedriver                        0x000000010411ffc8 chromedriver + 524232
+4   chromedriver                        0x0000000104115734 chromedriver + 481076
+5   chromedriver                        0x0000000104156c58 chromedriver + 748632
+6   chromedriver                        0x0000000104113f1c chromedriver + 474908
+7   chromedriver                        0x0000000104114ef4 chromedriver + 478964
+8   chromedriver                        0x000000010446959c chromedriver + 3970460
+9   chromedriver                        0x000000010446d6f0 chromedriver + 3987184
+10  chromedriver                        0x00000001044735b4 chromedriver + 4011444
+11  chromedriver                        0x000000010446e2fc chromedriver + 3990268
+12  chromedriver                        0x00000001044461c0 chromedriver + 3826112
+13  chromedriver                        0x000000010448a088 chromedriver + 4104328
+14  chromedriver                        0x000000010448a1e0 chromedriver + 4104672
+15  chromedriver                        0x0000000104499f28 chromedriver + 4169512
+16  libsystem_pthread.dylib             0x000000019dcf3fa8 _pthread_start + 148
+17  libsystem_pthread.dylib             0x000000019dceeda0 thread_start + 8
+
+2023-06-05 03:15:30,212 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
