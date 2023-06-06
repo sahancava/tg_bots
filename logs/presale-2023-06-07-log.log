@@ -1,0 +1,25 @@
+2023-06-07 02:26:50,393 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-07 02:26:51,960 [MainThread  ] [INFO ]  {'wallet_address': '0x7CC62289394d8a339d013d03A6A7fa80A86ee9D5', 'private_key': '0x2959e0d9bb76562f98429a413ad44b05d9cad1b7ccb9fce67af92cdba929485a'}
+2023-06-07 02:28:12,708 [MainThread  ] [INFO ]  {'min_buy': '0.1', 'max_buy': '1', 'end_time': 1686056400, 'presale_address': '0x79A549E0CD42742081609383127C15E79E36ad54'}
+2023-06-07 02:28:13,497 [MainThread  ] [INFO ]  {'wallet_address': '0x7Ae2069C641d7dae3192827D38dDA477b761eE07', 'private_key': '0x6d0ef77451437439f97c1f67d1a7dc5b732c0d5e1fd1935b5c3221458ad42487'}
+2023-06-07 02:28:52,580 [MainThread  ] [ERROR]  Message: 
+Stacktrace:
+0   chromedriver                        0x00000001007a7f48 chromedriver + 4226888
+1   chromedriver                        0x00000001007a04f4 chromedriver + 4195572
+2   chromedriver                        0x00000001003e4d68 chromedriver + 281960
+3   chromedriver                        0x000000010041ffc8 chromedriver + 524232
+4   chromedriver                        0x0000000100415734 chromedriver + 481076
+5   chromedriver                        0x0000000100456c58 chromedriver + 748632
+6   chromedriver                        0x0000000100413f1c chromedriver + 474908
+7   chromedriver                        0x0000000100414ef4 chromedriver + 478964
+8   chromedriver                        0x000000010076959c chromedriver + 3970460
+9   chromedriver                        0x000000010076d6f0 chromedriver + 3987184
+10  chromedriver                        0x00000001007735b4 chromedriver + 4011444
+11  chromedriver                        0x000000010076e2fc chromedriver + 3990268
+12  chromedriver                        0x00000001007461c0 chromedriver + 3826112
+13  chromedriver                        0x000000010078a088 chromedriver + 4104328
+14  chromedriver                        0x000000010078a1e0 chromedriver + 4104672
+15  chromedriver                        0x0000000100799f28 chromedriver + 4169512
+16  libsystem_pthread.dylib             0x0000000181e87034 _pthread_start + 136
+17  libsystem_pthread.dylib             0x0000000181e81e3c thread_start + 8
+

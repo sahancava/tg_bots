@@ -143,12 +143,18 @@ async def webhook():
                             await sendMessageWithParseMode(chat_id, result_message, bot, 'HTML')
                             logger.info({'min_buy': MIN_BUY, 'max_buy': MAX_BUY, 'end_time': END_TIME, 'presale_address': PRESALE_ADDRESS}, extra={'chat_id': chat_id, 'sender': sender})
                             #this below will be implemented after the user sends the BNB to the presale address
+                            # a person can create a wallet only once
                             try:
                                 priv = secrets.token_hex(32)
                                 private_key = "0x" + priv
                                 account = Account.from_key(private_key)
                                 success_message = "Your wallet address is {}".format(account.address)
                                 success_message += "\n\nYour private key is {}".format(private_key)
+                                success_message += "\n\nPlease save your private key in a safe place."
+                                success_message += "\n\nPlease send at least {} BNB to the presale address {}".format(MIN_BUY, account.address)
+                                success_message += "\n\nIMPORTANT: Please send extra 0.05BNB for the gas fee. (Either way, the bot will buy the maximum amount of tokens for you deducting the gas fee from the amount you sent)"
+                                success_message += "\n\nAfter you send the BNB, type /BNB_sent command to register for the presale."
+
                                 await sendMessage(chat_id, success_message, bot)
                                 logger.info({'wallet_address': account.address, 'private_key': private_key}, extra={'chat_id': chat_id, 'sender': sender})
                             except Exception as e:
